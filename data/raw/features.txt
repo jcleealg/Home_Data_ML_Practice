@@ -1,0 +1,180 @@
+ExterQual（外部材質品質）：Ex > Gd > TA > Fa > Po
+ExterCond（外部材質狀況）：Ex > Gd > TA > Fa > Po
+BsmtQual（地下室高度）：Ex > Gd > TA > Fa > Po
+BsmtCond（地下室狀況）：Ex > Gd > TA > Fa > Po
+BsmtExposure（地下室採光）：Gd > Av > Mn > No
+BsmtFinType1、BsmtFinType2（地下室完成類型）：GLQ > ALQ > BLQ > Rec > LwQ > Unf
+HeatingQC（暖氣品質）：Ex > Gd > TA > Fa > Po
+KitchenQual（廚房品質）：Ex > Gd > TA > Fa > Po
+FireplaceQu（壁爐品質）：Ex > Gd > TA > Fa > Po
+GarageFinish（車庫完成度）：Fin > RFn > Unf
+GarageQual（車庫品質）：Ex > Gd > TA > Fa > Po
+GarageCond（車庫狀況）：Ex > Gd > TA > Fa > Po
+PoolQC（游泳池品質）：Ex > Gd > TA > Fa
+
+MSZoning（區域類型）
+Street（街道型態）
+Alley（巷道型態）
+LotShape（地塊形狀）
+LandContour（地勢輪廓）
+Utilities（公共設施）
+LotConfig（地塊配置）
+Neighborhood（鄰里）
+Condition1（主要道路或鐵路鄰近情況）
+Condition2（次要道路或鐵路鄰近情況）
+BldgType（建築型態）
+HouseStyle（房屋型態）
+RoofStyle（屋頂型態）
+RoofMatl（屋頂材料）
+Exterior1st（外牆材料1）
+Exterior2nd（外牆材料2）
+Foundation（地基型態）
+BsmtFinType1（地下室完成類型1）
+BsmtFinType2（地下室完成類型2）
+Heating（暖氣型態）
+CentralAir（中央空調）
+Electrical（電力系統）
+Functional（功能等級）
+GarageType（車庫型態）
+PavedDrive（車道鋪設）
+MiscFeature（其他設施）
+SaleType（銷售型態）
+SaleCondition（銷售條件）
+Fence（圍籬型態）
+
+
+當資料同時包含數值型與類別型特徵時，做迴歸分析（如預測房價）常見建議如下：
+
+類別型特徵需轉換為數值型：
+
+最常用的是「獨熱編碼」（One-Hot Encoding）：將每個類別轉成一組0/1欄位，適合無序的類別。
+若類別有明顯順序（如等級），可用「順序編碼」（Ordinal Encoding）。
+若類別數量極多，可考慮「目標編碼」（Target Encoding）等進階方法。
+數值型特徵可直接使用，但建議：
+
+檢查是否有極端值（outlier），必要時做標準化（Standardization）或正規化（Normalization）。
+缺失值可用平均數、中位數或其他方法補值。
+建議流程：
+
+先做資料前處理（如上所述）。
+拆分訓練集與測試集。
+建立線性迴歸、樹模型（如隨機森林、XGBoost）等模型。
+評估模型表現（如RMSE、MAE）。
+Python常用工具：
+
+pandas、scikit-learn（含OneHotEncoder、ColumnTransformer、LinearRegression等）
+
+常見的迴歸演算法有：
+
+線性迴歸（Linear Regression）
+岭迴歸（Ridge Regression）
+套索迴歸（Lasso Regression）
+彈性網（Elastic Net Regression）
+多項式迴歸（Polynomial Regression）
+支持向量迴歸（SVR, Support Vector Regression）
+決策樹迴歸（Decision Tree Regression）
+隨機森林迴歸（Random Forest Regression）
+梯度提升樹（Gradient Boosting Regression，如 XGBoost、LightGBM、CatBoost）
+K近鄰迴歸（K-Nearest Neighbors Regression, KNN）
+貝葉斯迴歸（Bayesian Regression）
+神經網路迴歸（Neural Network Regression）
+
+線性迴歸（Linear Regression）
+
+優點：簡單、解釋性強、訓練速度快
+缺點：只能擬合線性關係，對離群值敏感
+適用：特徵與目標近似線性關係、特徵數不多、需解釋模型時
+岭迴歸（Ridge Regression）
+
+優點：可處理多重共線性，防止過擬合
+缺點：無法做特徵選擇
+適用：特徵間高度相關、需正則化時
+套索迴歸（Lasso Regression）
+
+優點：可自動做特徵選擇，防止過擬合
+缺點：特徵多且高度相關時效果不佳
+適用：希望自動篩選特徵、特徵數多時
+彈性網（Elastic Net Regression）
+
+優點：結合 Ridge 與 Lasso 優點，適合特徵多且相關性高
+缺點：需調兩個正則化參數
+適用：特徵多且高度相關時
+多項式迴歸（Polynomial Regression）
+
+優點：可擬合非線性關係
+缺點：容易過擬合，特徵維度快速上升
+適用：特徵與目標有明顯非線性關係
+支持向量迴歸（SVR, Support Vector Regression）
+
+優點：可擬合非線性、對高維資料有效
+缺點：大資料集訓練慢、參數需調整
+適用：中小型資料集、非線性關係
+決策樹迴歸（Decision Tree Regression）
+
+優點：可擬合複雜關係、對異常值不敏感、可處理類別特徵
+缺點：易過擬合、預測不連續
+適用：特徵間有複雜交互作用、需解釋決策路徑
+隨機森林迴歸（Random Forest Regression）
+
+優點：抗過擬合、可處理高維與缺失值、特徵重要性
+缺點：模型大、訓練與預測較慢、解釋性較差
+適用：特徵多、非線性、需穩定預測
+梯度提升樹（Gradient Boosting Regression，如 XGBoost、LightGBM、CatBoost）
+
+優點：高準確率、可處理複雜關係、特徵重要性
+缺點：參數多、訓練較慢、易過擬合
+適用：追求高準確率、特徵多、非線性問題
+K近鄰迴歸（K-Nearest Neighbors Regression, KNN）
+
+優點：無需訓練、簡單直觀
+缺點：大資料慢、對離群值敏感、特徵需標準化
+適用：資料量小、特徵維度低、分布平滑
+貝葉斯迴歸（Bayesian Regression）
+
+優點：可量化不確定性、適合小樣本
+缺點：計算較慢、需先驗分布
+適用：樣本少、需不確定性估計
+神經網路迴歸（Neural Network Regression）
+
+優點：可擬合高度非線性、可處理大量特徵
+缺點：需大量資料、訓練慢、參數多、解釋性差
+適用：大數據、複雜非線性關係、深度學習場景
+
+
+常見補值方法如下：
+
+常數補值（如 0、-1、'Missing'）
+
+優點：簡單、不會改變其他資料分布
+缺點：可能引入非自然的分布，對部分模型有影響
+適用：類別型特徵、明確代表「無」或「缺」的情境
+平均數補值（mean）
+
+優點：簡單，適合數值型資料
+缺點：對離群值敏感，會低估變異
+適用：數值型特徵、分布較對稱時
+中位數補值（median）
+
+優點：不受離群值影響
+缺點：分布極度偏斜時效果有限
+適用：數值型特徵、分布偏斜或有離群值時
+眾數補值（mode）
+
+優點：適合類別型資料
+缺點：若眾數比例過高，可能降低資料多樣性
+適用：類別型特徵
+前後值補值（ffill/bfill）
+
+優點：適合有時間序列或順序關係的資料
+缺點：若缺失連續過多，效果差
+適用：時間序列、連續觀測資料
+多重插補（如 KNN、迴歸插補、MICE）
+
+優點：考慮多特徵間關係，補值更精確
+缺點：計算較慢，需較多資料
+適用：重要欄位缺失、資料量大、需提升模型精度時
+直接刪除缺失值（dropna）
+
+優點：簡單，不引入假訊息
+缺點：資料量減少，可能造成偏誤
+適用：缺失比例極低、資料量充足時

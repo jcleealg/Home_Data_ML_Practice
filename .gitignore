@@ -1,0 +1,31 @@
+# Python virtual environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Large files that should not be in git
+# Provide a download link in README.md instead
+/data/raw/*.csv
+/data/raw/*.gz
+/data/processed/*.csv
+/saved_models/*.pkl
+/saved_models/*.pth
+/saved_models/*.json
+
+# OS-specific files
+.DS_Store
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VSCode settings
+.vscode/
+
+# Log and temp files
+*.log
+*.tmp
+*.bak
+
+# Archive directory
+archive/
