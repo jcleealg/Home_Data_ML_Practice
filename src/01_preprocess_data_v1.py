@@ -1,8 +1,5 @@
 import pandas as pd
 import numpy as np
-
-import pandas as pd
-import numpy as np
 from pathlib import Path
 
 # --- 0. 設定路徑 ---
