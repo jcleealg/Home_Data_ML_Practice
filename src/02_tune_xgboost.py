@@ -17,7 +17,7 @@ SAVED_MODELS_DIR = PROJECT_ROOT / 'saved_models'
 SUBMISSIONS_DIR = PROJECT_ROOT / 'submissions'
 
 # ===== 隨機種子設定 =====
-SEED = 42
+SEED = 53
 # ========================
 
 # ===== Optuna 設定 =====

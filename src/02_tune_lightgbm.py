@@ -17,11 +17,11 @@ SAVED_MODELS_DIR = PROJECT_ROOT / 'saved_models'
 SUBMISSIONS_DIR = PROJECT_ROOT / 'submissions'
 
 # ===== 隨機種子設定 =====
-SEED = 42
+SEED = 43
 # ========================
 
 # ===== Optuna 設定 =====
-N_TRIALS = 100      # 嘗試優化的次數
+N_TRIALS = 100     # 嘗試優化的次數
 N_SPLITS = 5        # K-Fold 交叉驗證的折數
 # =======================
 
